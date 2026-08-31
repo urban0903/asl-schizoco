@@ -2,7 +2,7 @@
  *	Autosplitter and Load Remover done by Failracer, TDOG20, WillTreaty and CrayZeei
  */
 
-state("nfs", "steam") 
+state("nfs", "steam 1.0.0.1") 
 {
 	string24 raceName: "nfs.exe", 0x99B7E4, 0x18, 0x3C;
 	int gameState: "nfs.exe", 0xF5DF00;
@@ -18,12 +18,13 @@ state("nfs", "steam")
 	
 }
 
-state("NFS", "origin") 
+state("NFS", "origin 1.1.2.1") 
 {
 	string24 raceName: "NFS.exe", 0xEAC524, 0x18, 0x3C;
 	int gameState: "NFS.exe", 0x148A700;
 	byte completed: "NFS.exe", 0xEF6484, 0xB4;
 	byte loadingEverything: "NFS.exe", 0xEB6382;
+	byte csStarter: "NFS.exe", 0xEB5C8E;
 	
 	float completion: "NFS.exe", 0xEF7E38, 0xD0;
 	int raceCP: "NFS.exe", 0xEF7E38, 0x394;
@@ -37,10 +38,10 @@ state("NFS", "origin")
 init
 {
 	if (modules.First().ModuleMemorySize == 0x1008000) {
-		version = "steam";
+		version = "steam 1.0.0.1";
 	}
 	else if (modules.First().ModuleMemorySize == 0x1556000) {
-		version = "origin";
+		version = "origin 1.1.2.1";
 	}
 }
 
@@ -308,13 +309,13 @@ update
 
 start
 {
-	if (version == "steam" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 96)) {
+	if (version == "steam 1.0.0.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 96) || (current.csStarter != old.csStarter && old.csStarter == 85)) {
 		return true;
-	} else if (version == "origin" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 28)) {
+	} else if (version == "origin 1.1.2.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 28)) {
 		return true;
-	} else if (version == "steam" && settings["quickracemode"] && old.raceStart == 0 && current.raceStart == 1 && (int)current.completion == 0) {
+	} else if (version == "steam 1.0.0.1" && settings["quickracemode"] && old.raceStart == 0 && current.raceStart == 1 && (int)current.completion == 0) {
 		return true;
-	} else if (version == "origin" && settings["quickracemode"] && old.raceStart == -134217728 && current.raceStart == -134217727 && (int)current.completion == 0) {
+	} else if (version == "origin 1.1.2.1" && settings["quickracemode"] && old.raceStart == -134217728 && current.raceStart == -134217727 && (int)current.completion == 0) {
 		return true;
 	}
 }
@@ -351,9 +352,9 @@ isLoading
 
 reset 
 {
-	if (version == "steam" && settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == 0) {
+	if (version == "steam 1.0.0.1" && settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == 0) {
 		return true;
-	} else if (version == "origin" && settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == -134217728) {
+	} else if (version == "origin 1.1.2.1" && settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == -134217728) {
 		return true;
 	} else {
 		return false;
