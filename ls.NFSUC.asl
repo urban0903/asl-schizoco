@@ -259,10 +259,12 @@ startup
 	settings.Add("cp_a_07_r.vlt", true, "Checkpoint 2", "cs");
 	settings.Add("race_bin_challenge_1.vlt", true, "Checkpoint 3", "cs");
 	settings.Add("cp_a_20_r.vlt", true, "Checkpoint 4", "cs");
-	settings.Add("cp_a_09.vlt", true, "Checkpoint 6", "cs");
+	settings.Add("cp_c_10.vlt", true, "Checkpoint 5", "cs");
+	settings.Add("cp_c_09.vlt", true, "Checkpoint 6", "cs");
+	settings.Add("or_b_03.vlt", true, "Outrun 6", "cs");
 	settings.Add("sp_c_06_r.vlt", true, "Sprint 1", "cs");
 	settings.Add("sp_a_27_r.vlt", true, "Sprint 2", "cs");
-	settings.Add("sp_1_13_r.vlt", true, "Sprint 4", "cs");
+	settings.Add("sp_a_13_r.vlt", true, "Sprint 4", "cs");
 	settings.Add("sp_c_19_r.vlt", true, "Sprint 5", "cs");
 	settings.Add("sp_b_02_r.vlt", true, "Sprint 6", "cs");
 	settings.Add("hb_c_03_r.vlt", true, "Highway Wars 1", "cs");
