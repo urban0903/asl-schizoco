@@ -29,7 +29,7 @@ state("NFS", "origin 1.1.2.1")
 	float completion: "NFS.exe", 0xEF7E38, 0xD0;
 	int raceCP: "NFS.exe", 0xEF7E38, 0x394;
 	int raceLap: "NFS.exe", 0xEF7E38, 0x64;
-	int raceStart: "NFS.exe", 0xEAC691;
+	byte raceStart: "NFS.exe", 0xEAC691;
 	float totalExp: "NFS.exe", 0xEAC548, 0x24;
 	float bonusZone: "NFS.exe", 0xEF7E2C, 0xC;
 	
@@ -311,13 +311,11 @@ update
 
 start
 {
-	if (version == "steam 1.0.0.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 96) || (current.csStarter != old.csStarter && old.csStarter == 85)) {
+	if (version == "steam 1.0.0.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 96)) {
 		return true;
-	} else if (version == "origin 1.1.2.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 28)) {
+	} else if (version == "origin 1.1.2.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 28) || (current.csStarter != old.csStarter && old.csStarter == 85)) {
 		return true;
-	} else if (version == "steam 1.0.0.1" && settings["quickracemode"] && old.raceStart == 0 && current.raceStart == 1 && (int)current.completion == 0) {
-		return true;
-	} else if (version == "origin 1.1.2.1" && settings["quickracemode"] && old.raceStart == -134217728 && current.raceStart == -134217727 && (int)current.completion == 0) {
+	} else if (settings["quickracemode"] && old.raceStart == 0 && current.raceStart == 1 && (int)current.completion == 0) {
 		return true;
 	}
 }
@@ -354,9 +352,7 @@ isLoading
 
 reset 
 {
-	if (version == "steam 1.0.0.1" && settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == 0) {
-		return true;
-	} else if (version == "origin 1.1.2.1" && settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == -134217728) {
+	if (settings["quickracemode"] && old.raceStart != current.raceStart && current.raceStart == 0) {
 		return true;
 	} else {
 		return false;
