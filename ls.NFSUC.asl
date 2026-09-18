@@ -8,6 +8,7 @@ state("nfs", "steam 1.0.0.1")
 	int gameState: "nfs.exe", 0xF5DF00;
 	byte completed: "nfs.exe", 0x9E5414, 0xB4;
 	byte loadingEverything: "nfs.exe", 0x9A530C;
+	string32 fmv: "nfs.exe", 0xF33830;										// alternate 0x999698, 0x2C;
 	
 	float completion : "nfs.exe", 0x9E6DC8, 0xD0;
 	int raceCP: "nfs.exe", 0x9E6DC8, 0x394;
@@ -311,7 +312,7 @@ update
 
 start
 {
-	if (version == "steam 1.0.0.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 96)) {
+	if (version == "steam 1.0.0.1" && !settings["quickracemode"] && (old.fmv != current.fmv && current.fmv == "CausewayIntro02")) {
 		return true;
 	} else if (version == "origin 1.1.2.1" && !settings["quickracemode"] && (current.gameState != old.gameState && old.gameState == 412) || (old.gameState == 56 && current.loadingEverything == 28) || (current.csStarter != old.csStarter && old.csStarter == 85)) {
 		return true;
