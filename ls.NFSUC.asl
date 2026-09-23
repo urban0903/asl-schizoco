@@ -8,7 +8,7 @@ state("nfs", "steam 1.0.0.1")
 	int gameState: "nfs.exe", 0xF5DF00;
 	byte completed: "nfs.exe", 0x9E5414, 0xB4;
 	byte loadingEverything: "nfs.exe", 0x9A530C;
-	string32 fmv: "nfs.exe", 0xF33830;										// alternate 0x999698, 0x2C;
+	string32 fmv: "nfs.exe", 0xF337A0;										// alternate 0x999698, 0x2C;
 	
 	float completion : "nfs.exe", 0x9E6DC8, 0xD0;
 	int raceCP: "nfs.exe", 0x9E6DC8, 0x394;
