@@ -26,7 +26,7 @@ state("NFS", "origin 1.1.2.1")
 	byte completed: "NFS.exe", 0xEF6484, 0xB4;
 	byte loadingEverything: "NFS.exe", 0xEB6382;
 	byte csStarter: "NFS.exe", 0xEB5C8E;
-	string32 fmv: "nfs.exe", 0xEAA388, 0x2C;
+	string32 fmv: "nfs.exe", 0x145FFB0;
 	
 	float completion: "NFS.exe", 0xEF7E38, 0xD0;
 	int raceCP: "NFS.exe", 0xEF7E38, 0x394;
@@ -42,7 +42,7 @@ init
 	if (modules.First().ModuleMemorySize == 0x1008000) {
 		version = "steam 1.0.0.1";
 	}
-	else if (modules.First().ModuleMemorySize == 0x1556000) {
+	else if (modules.First().ModuleMemorySize == 0x1556000 || modules.First().ModuleMemorySize == 0x1592000) {
 		version = "origin 1.1.2.1";
 	}
 }
