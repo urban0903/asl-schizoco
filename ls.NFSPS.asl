@@ -1,7 +1,7 @@
 state("nfs", "v1.1") 
 {
     int loading: 0xAB2E16;
-	string12 fmv: "nfs.exe", 0x6B27E0;
+	string32 fmv: "nfs.exe", 0x6B27E0;
 }
 
 init 
@@ -20,13 +20,12 @@ startup
 start
 {
 	vars.split = 0;
-	return old.fmv != current.fmv && current.fmv == "fmv01_career";
+	return old.fmv != current.fmv && current.fmv == "fmv01_career_intro";
 }
 
 split
 {
-	// First race splitted by the count of loading screens probably will change that
-	if(vars.split == 2 && old.loading == 0 && current.loading != 0 && settings["prologue"]) {
+	if(old.fmv != current.fmv && current.fmv == "FMV02_Career_extro" && settings["prologue"]) {
 		return true;
 	}
 }
