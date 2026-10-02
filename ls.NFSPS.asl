@@ -2,6 +2,7 @@ state("nfs", "v1.1")
 {
     int loading: 0xAB2E16;
 	string32 fmv: "nfs.exe", 0x6B27E0;
+	string32 nis: "nfs.exe", 0x6B2828;		// END01HD - BM Showdown Cutscene
 }
 
 init 
