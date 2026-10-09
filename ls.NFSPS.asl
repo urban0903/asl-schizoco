@@ -7,7 +7,7 @@ state("nfs", "v1.1")
 
 init 
 {
-	// Cracked v1.1 (Vitality), Cracked v1.1 (Battery), Non Cracked v1.1
+	// Cracked v1.1 (Vitality), Cracked v1.1 (Battery), Non Cracked v1.1 || 1.0 -> Ox3D0640C
     if(modules.First().ModuleMemorySize == 0x1784000 || modules.First().ModuleMemorySize == 0x1B687E2 || modules.First().ModuleMemorySize == 0x16A9000) {
 		version = "v1.1";
 	}
